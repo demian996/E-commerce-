@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Usuario{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #000000; /* Fondo negro */
+            color: #FFD700; /* Texto en color amarillo */
+        }
+        .form-control, .btn {
+            border-radius: 0.25rem; /* Bordes redondeados */
+        }
+        .btn-primary {
+            background-color: #28a745; /* Botón en color verde */
+            border-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838; /* Botón en color verde más oscuro al pasar el cursor */
+            border-color: #218838;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<header class="mb-4">
+    <h1 class="text-center">Editar Usuario</h1>
+</header>
+<main class="container">
+    <form action="{{ url_for('admin.editar_usuario', id=usuario.id) }}" method="post">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" value="{{ usuario.nombre }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" value="{{ usuario.email }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="contrasena" class="form-label">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" class="form-control" value="{{ usuario.contrasena }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="rol" class="form-label">Rol:</label>
+            <select id="rol" name="rol" class="form-select" required>
+                <option value="cliente" {% if usuario.rol == 'cliente' %}selected{% endif %}>Cliente</option>
+                <option value="administrador" {% if usuario.rol == 'administrador' %}selected{% endif %}>Administrador</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Administración - E-commerce{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #000000; /* Fondo negro */
+            color: #FFD700; /* Texto en color amarillo */
+        }
+        .card {
+            background-color: #333333; /* Fondo de las tarjetas en gris oscuro */
+            color: #FFD700; /* Texto en las tarjetas en color amarillo */
+            border: 1px solid #FFD700; /* Borde de las tarjetas en color amarillo */
+        }
+        .card-title {
+            color: #FFD700; /* Título de las tarjetas en color amarillo */
+        }
+        .btn-primary {
+            background-color: #FFD700; /* Botón en color amarillo */
+            border-color: #FFD700;
+            color: #000000; /* Texto del botón en negro */
+        }
+        .btn-primary:hover {
+            background-color: #FFC107; /* Botón en color amarillo más claro al pasar el cursor */
+            border-color: #FFC107;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center">Panel de Administración</h1>
+    <p class="text-center">Bienvenido, administrador. Aquí puedes gestionar las categorías, productos, usuarios y ver los logs de transacciones.</p>
+    <div class="row mt-4">
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Categorías</h5>
+                    <a href="{{ url_for('admin.gestionar_categorias') }}" class="btn btn-primary">Ir a Categorías</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Productos</h5>
+                    <a href="{{ url_for('admin.gestionar_productos') }}" class="btn btn-primary">Ir a Productos</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Usuarios</h5>
+                    <a href="{{ url_for('admin.gestionar_usuarios') }}" class="btn btn-primary">Ir a Usuarios</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ver Logs de Transacciones</h5>
+                    <a href="{{ url_for('admin.ver_logs_transacciones') }}" class="btn btn-primary">Ir a Logs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  ecommerce_app:
+    build: .
+    container_name: ecommerce_app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - SQLALCHEMY_BINDS=mysql+pymysql://root:root@db_mysql/ecommerce,postgresql+psycopg2://postgres:root@db_postgres/ecommerce
+    depends_on:
+      - db_mysql
+      - db_postgres
+
+  db_mysql:
+    image: mysql:8.0
+    container_name: db_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ecommerce
+    ports:
+      - "3307:3306"  # Cambiado a 3307 para evitar conflictos
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./initdb/mysql:/docker-entrypoint-initdb.d
+
+  db_postgres:
+    image: postgres:13
+    container_name: db_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: ecommerce
+    ports:
+      - "5433:5432"  # Cambiado a 5433 para evitar conflictos
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./initdb/postgres:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql_data:
+  postgres_data:
