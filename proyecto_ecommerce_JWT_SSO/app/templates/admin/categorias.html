@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Administrar Categorías{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #000000; /* Fondo negro */
+            color: #FFD700; /* Texto en color amarillo */
+        }
+        .btn-editar {
+            background-color: #28a745; /* Botón en color verde */
+            border-color: #28a745;
+            color: #000000; /* Texto del botón en negro */
+        }
+        .btn-editar:hover {
+            background-color: #218838; /* Botón en color verde más oscuro al pasar el cursor */
+            border-color: #218838;
+        }
+        .btn-eliminar {
+            background-color: #FFD700; /* Botón en color amarillo */
+            border-color: #FFD700;
+            color: #000000; /* Texto del botón en negro */
+        }
+        .btn-eliminar:hover {
+            background-color: #FFC107; /* Botón en color amarillo más claro al pasar el cursor */
+            border-color: #FFC107;
+        }
+        .table-dark th, .table-dark td {
+            border-color: #FFD700;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<header class="mb-4">
+    <h1 class="text-center">Administrar Categorías</h1>
+</header>
+<main class="container">
+    <section class="mb-4">
+        <h2>Agregar Nueva Categoría</h2>
+        <form action="{{ url_for('admin.gestionar_categorias', token=token) }}" method="post">
+            <input type="hidden" name="token" value="{{ token }}">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" class="form-control" required></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+        </form>
+    </section>
+
+    <section>
+        <h2>Listar Categorías</h2>
+        <div class="table-responsive">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for categoria in categorias %}
+                        <tr>
+                            <td>{{ categoria.nombre }}</td>
+                            <td>{{ categoria.descripcion }}</td>
+                            <td>
+                                <a href="{{ url_for('admin.editar_categoria', id=categoria.id, token=token) }}" class="btn btn-editar btn-sm">Editar</a>
+                                <form action="{{ url_for('admin.eliminar_categoria', id=categoria.id, token=token) }}" method="post" style="display:inline;">
+                                    <input type="hidden" name="token" value="{{ token }}">
+                                    <button type="submit" class="btn btn-eliminar btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+{% endblock %}

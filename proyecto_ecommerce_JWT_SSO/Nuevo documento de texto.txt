@@ -1,0 +1,46 @@
+# Proyecto E-commerce
+
+## Descripción
+
+Este proyecto es una aplicación de e-commerce que utiliza Flask, SQLAlchemy, MySQL y PostgreSQL. La aplicación está diseñada siguiendo los principios de la arquitectura de software y utiliza patrones de diseño como Abstract Factory, DAO y DTO.
+
+## Estructura del Proyecto
+
+```plaintext
+proyecto_ecommerce/
+├── app/
+│   ├── __init__.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── mysql_models.py
+│   │   ├── postgres_models.py
+│   ├── dao/
+│   │   ├── __init__.py
+│   │   ├── mysql_dao.py
+│   │   ├── postgres_dao.py
+│   ├── dto/
+│   │   ├── __init__.py
+│   │   ├── categoria_dto.py
+│   │   ├── producto_dto.py
+│   │   ├── usuario_dto.py
+│   │   ├── pedido_dto.py
+│   │   ├── detalle_pedido_dto.py
+│   │   ├── log_transaccion_dto.py
+│   ├── factories/
+│   │   ├── __init__.py
+│   │   ├── dao_factory.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── categorias.py
+│   │   ├── pedidos.py
+│   │   ├── reportes.py
+│   ├── templates/
+│   ├── static/
+├── initdb/
+│   ├── mysql_init.sql
+│   ├── postgres_init.sql
+├── app.py
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── README.md

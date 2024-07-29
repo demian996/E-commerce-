@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Grupo - UCE</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        }
+        .card {
+            margin: 20px;
+            border: 1px solid #004080; /* Azul UCE */
+        }
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-title {
+            color: #004080; /* Azul UCE */
+        }
+        .card-text {
+            color: #333;
+        }
+        .navbar {
+            background-color: #004080; /* Azul UCE */
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+        .footer {
+            background-color: #004080; /* Azul UCE */
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .header img {
+            max-width: 100px;
+            height: auto;
+        }
+        .header h1 {
+            color: #004080; /* Azul UCE */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Escudo_de_la_Universidad_Central_del_Ecuador_-_Andr%C3%A9s_Agual.png" alt="Logo UCE" style="width: 30px;">
+            UCE
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:5000/auth/advertencia?token={{ token }}">Ir a e-commerce</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Header -->
+    <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Escudo_de_la_Universidad_Central_del_Ecuador_-_Andr%C3%A9s_Agual.png" alt="Logo UCE">
+        <h1>Arquitectura de Software</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <div class="card-body">
+                        <h5 class="card-title">TAREA 1</h5>
+                        <p class="card-text">Se debe crear la categoría de Pantalones.</p>
+                        <a class="btn btn-dark" href="http://localhost:5000/auth/advertencia?token={{ token }}">Ir a e-commerce</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <div class="card-body">
+                        <h5 class="card-title">TAREA 2</h5>
+                        <p class="card-text">Dentro de la categoría Pantalones se debe crear una subcategoría de pantalones de lana y de tela.</p>
+                        <a class="btn btn-dark" href="http://localhost:5000/auth/advertencia?token={{ token }}">Ir a e-commerce</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <div class="card-body">
+                        <h5 class="card-title">TAREA 3</h5>
+                        <p class="card-text">Crear un usuario administrador con el nombre Hidalgo.</p>
+                        <a class="btn btn-dark" href="http://localhost:5000/auth/advertencia?token={{ token }}">Ir a e-commerce</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="header">
+        <h2>Desarrollado por:</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- Carta de Integrante 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://scontent.fuio10-1.fna.fbcdn.net/v/t1.6435-9/135718540_1978735435618632_7550339058993838825_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=QViXn6fFassQ7kNvgFgBo4y&_nc_ht=scontent.fuio10-1.fna&oh=00_AYCTsVuTxZ2OHIOhYQjplXMQIO51GiVocdAQ4mg53W9e2Q&oe=66CE618F" alt="Foto de Integrante 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Johao Damian Crespo Medina</h5>
+                        <p class="card-text">jdcrespo@uce.edu.ec</p>
+                        <p class="card-text">Estudiante de Arquitectura de Software</p>
+                        <p class="card-text">7mo semestre</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carta de Integrante 2 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://scontent.fuio10-2.fna.fbcdn.net/v/t39.30808-6/336031219_1959564781045928_299636572718230090_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=I0OJmkK7bukQ7kNvgEL26Id&_nc_ht=scontent.fuio10-2.fna&oh=00_AYBbBIGkt3agKVReaoKeDVW-oQNIEfVHXQ6irqz3Y6zNbg&oe=66ACC53B" alt="Foto de Integrante 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Bryan Alexander Cajamarca Alban</h5>
+                        <p class="card-text">bacajamarcaa@uce.edu.ec</p>
+                        <p class="card-text">Estudiante de Arquitectura de Software</p>
+                        <p class="card-text">7mo semestre</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carta de Integrante 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://scontent.fuio10-1.fna.fbcdn.net/v/t39.30808-6/277737760_2766113667031415_5118422749092513486_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=SFUQ2A3SX2AQ7kNvgEMnw4w&_nc_ht=scontent.fuio10-1.fna&oh=00_AYB-baK97khDyrYJp1Zp0mbRWOXwSNT3lzSm-RMxPhHEfA&oe=66ACBBBF" alt="Foto de Integrante 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Segundo Steven Tipanquiza Cuchipe</h5>
+                        <p class="card-text">sstipanquiza@uce.edu.ec</p>
+                        <p class="card-text">Estudiante de Arquitectura de Software</p>
+                        <p class="card-text">7mo semestre</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carta de Integrante 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://scontent.fuio10-1.fna.fbcdn.net/v/t39.30808-1/453412879_122099155868447229_8239767311872625601_n.jpg?stp=dst-jpg_p200x200&_nc_cat=106&ccb=1-7&_nc_sid=0ecb9b&_nc_ohc=NKrdsDhd5GIQ7kNvgE0Ga1W&_nc_ht=scontent.fuio10-1.fna&oh=00_AYDjtGSZ5-vySUY9_vmOrdWeaVNvCk558SfzcsTVe7qUNQ&oe=66ACB93C" alt="Foto de Integrante 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Marcos Stiveen Narváez Guevara </h5>
+                        <p class="card-text">msnarvaez@uce.edu.ec</p>
+                        <p class="card-text">Estudiante de Arquitectura de Software</p>
+                        <p class="card-text">7mo semestre</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carta de Integrante 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://uvirtual.uce.edu.ec/pluginfile.php/208564/user/icon/academi/f1?rev=808249" alt="Foto de Integrante 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Katherine Joseth Cacuango Colcha</h5>
+                        <p class="card-text">kjcacuangoc@uce.edu.ec</p>
+                        <p class="card-text">Estudiante de Arquitectura de Software</p>
+                        <p class="card-text">7mo semestre</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <!--&copy; 2024 Universidad Central del Ecuador. Todos los derechos reservados.-->
+        &copy; 2024 UCE Sistemas de la informacion//Arquitectura de Software//Grupo5
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

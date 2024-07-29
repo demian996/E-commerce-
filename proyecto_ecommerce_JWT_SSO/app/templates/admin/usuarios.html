@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Administrar Usuarios{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #000000; /* Fondo negro */
+            color: #FFD700; /* Texto en color amarillo */
+        }
+        .btn-editar {
+            background-color: #28a745; /* Botón en color verde */
+            border-color: #28a745;
+            color: #000000; /* Texto del botón en negro */
+        }
+        .btn-editar:hover {
+            background-color: #218838; /* Botón en color verde más oscuro al pasar el cursor */
+            border-color: #218838;
+        }
+        .btn-eliminar {
+            background-color: #FFD700; /* Botón en color amarillo */
+            border-color: #FFD700;
+            color: #000000; /* Texto del botón en negro */
+        }
+        .btn-eliminar:hover {
+            background-color: #FFC107; /* Botón en color amarillo más claro al pasar el cursor */
+            border-color: #FFC107;
+        }
+        .table-dark th, .table-dark td {
+            border-color: #FFD700;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<header class="mb-4">
+    <h1 class="text-center">Administrar Usuarios</h1>
+</header>
+<main class="container">
+    <section class="mb-4">
+        <h2>Agregar Nuevo Usuario</h2>
+        <form action="{{ url_for('admin.gestionar_usuarios', token=request.args.get('token')) }}" method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="contrasena" class="form-label">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="rol" class="form-label">Rol:</label>
+                <select id="rol" name="rol" class="form-select" required>
+                    <option value="cliente">Cliente</option>
+                    <option value="administrador">Administrador</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+        </form>
+    </section>
+
+    <section>
+        <h2>Listar Usuarios</h2>
+        <div class="table-responsive">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ usuario.nombre }}</td>
+                            <td>{{ usuario.email }}</td>
+                            <td>{{ usuario.rol }}</td>
+                            <td>
+                                <a href="{{ url_for('admin.editar_usuario', id=usuario.id, token=request.args.get('token')) }}" class="btn btn-editar btn-sm">Editar</a>
+                                <form action="{{ url_for('admin.eliminar_usuario', id=usuario.id, token=request.args.get('token')) }}" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-eliminar btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+{% endblock %}

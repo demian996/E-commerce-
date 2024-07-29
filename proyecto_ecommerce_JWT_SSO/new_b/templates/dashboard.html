@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ username }}</h2>
+    <p>Acceso exitoso por método normal.</p>
+    <p>Accede al sistema de ecommerce mediante token:</p>
+    <a href="http://localhost:5000/auth/redirect_to_b?token={{ token }}">Ecommerce con Token</a>
+</body>
+</html>
