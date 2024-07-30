@@ -5,6 +5,7 @@ from app.factories.dao_factory import DAOFactory
 from werkzeug.security import generate_password_hash
 from sqlalchemy.exc import IntegrityError
 from config_access import verify_token
+from invalid_tokens import is_token_invalid  # Importar la función para verificar tokens inválidos
 import functools
 
 admin_bp = Blueprint('admin', __name__)
@@ -19,6 +20,9 @@ def token_required(view):
         if not token:
             flash('Token no proporcionado', 'danger')
             return redirect(url_for('auth.login'))
+        if is_token_invalid(token):
+            flash('Token inválido o expirado', 'danger')
+            return redirect(url_for('auth.login'))
         data = verify_token(token)
         if data is None:
             flash('Token inválido o expirado', 'danger')
@@ -28,6 +32,7 @@ def token_required(view):
         return view(token=token, **kwargs)
     return wrapped_view
 
+# Rutas protegidas con el middleware `token_required`
 @admin_bp.route('/home_admin')
 @token_required
 def home_admin(token):
@@ -56,7 +61,6 @@ def gestionar_categorias(token):
     return render_template('admin/categorias.html', categorias=categorias, token=token)
 
 @admin_bp.route('/categorias/editar/<int:id>', methods=['GET', 'POST'])
-
 @token_required
 def editar_categoria(id, token):
     dao = DAOFactory.get_categoria_dao('mysql')

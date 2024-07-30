@@ -5,7 +5,7 @@ SECRET_KEY = 'your_jwt_secret_key'
 
 def create_access_token(identity):
     payload = {
-        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1),
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=60),
         'iat': datetime.datetime.utcnow(),
         'sub': {
             'user_id': identity['user_id'],

@@ -1,8 +1,10 @@
+# app/routes/auth.py
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session, jsonify
 from app.dao.mysql_dao import UsuarioDAO
 from werkzeug.security import check_password_hash, generate_password_hash
 from config_access import generate_token, verify_token
 from access_log import add_log  # Importar la función para agregar logs
+from invalid_tokens import add_invalid_token  # Importar la función para invalidar tokens
 import re
 
 auth_bp = Blueprint('auth', __name__)
@@ -93,6 +95,9 @@ def redirect_to_ecommerce():
 
 @auth_bp.route('/logout')
 def logout():
+    token = request.args.get('token')
+    if token:
+        add_invalid_token(token)  # Invalida el token
     session.clear()
     flash('Has cerrado sesión', 'success')
     return redirect(url_for('main.home'))

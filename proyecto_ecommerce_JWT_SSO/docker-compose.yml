@@ -47,6 +47,7 @@ services:
       - "5001:5001"
     environment:
       - JWT_SECRET_KEY=my_jwt_secret  # Clave secreta de JWT
+      - SERVER_IP=192.168.175.109 
     depends_on:
       - db_mysql
       - db_postgres
